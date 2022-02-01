@@ -1,0 +1,9 @@
+<mat-form-field>
+  <input matInput type="text" required placeholder="Playlist name" [formControl]="playlistName"/>
+</mat-form-field>
+<button mat-raised-button (click)="createPlaylist()">New Playlist</button>
+
+<mat-card *ngFor="let playlist of playlists">
+  <mat-card-title  (click)="seePlaylist(playlist.id)">{{playlist.name}}</mat-card-title>
+  <mat-card-content>{{playlist.playlistSongs.length}} songs</mat-card-content>
+</mat-card>

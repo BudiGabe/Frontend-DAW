@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-title>User info</mat-card-title>
+  <mat-card-content>Name: {{user.name}}</mat-card-content>
+  <mat-card-content>Email: {{user.email}}</mat-card-content>
+  <mat-card-content *ngIf="user.info!=null">Age: {{user.info.age}}</mat-card-content>
+  <mat-card-content *ngIf="user.info!=null">Sex: {{user.info.sex}}</mat-card-content>
+  <mat-card-actions>
+    <mat-form-field>
+      <input matInput type="number" required placeholder="Age" [formControl]="newAge"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" required placeholder="Sex" [formControl]="newSex"/>
+    </mat-form-field>
+    <button mat-raised-button (click)="updateUserInfo()">Update info</button>
+  </mat-card-actions>
+</mat-card>
+<ul>
+  <li *ngFor="let event of history">{{event}}</li>
+</ul>
+<br/>
+<button mat-raised-button routerLink="../profile/songs" routerLinkActive="active">See songs</button>
+<button mat-raised-button routerLink="../profile/playlists">See playlists</button>
+
+<router-outlet></router-outlet>

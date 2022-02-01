@@ -1,0 +1,10 @@
+<div>
+  <input type="text" placeholder="Search track"
+        (keyup)="search(searchTerm.value)"
+         #searchTerm>
+</div>
+
+<app-track-item
+  [track]="track" *ngFor="let track of tracksList"
+></app-track-item>
+

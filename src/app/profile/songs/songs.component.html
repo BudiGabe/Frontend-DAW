@@ -1,0 +1,20 @@
+<mat-card *ngFor="let song of songs">
+  <mat-card-title (contextmenu)="onRightClick($event, song.songId)"
+                  style="padding-bottom: 20px;">
+    {{song.name}}
+  </mat-card-title>
+  <mat-card-content>Popularity: {{song.popularity}}</mat-card-content>
+</mat-card>
+
+<div style="visibility: hidden; position: fixed;"
+     [style.left.px]="menuTopLeftPosition.x"
+     [style.top.px]="menuTopLeftPosition.y"
+     [matMenuTriggerFor]="rightMenu"></div>
+
+<mat-menu #rightMenu="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="playlistMenu">Add to playlist</button>
+    <button mat-menu-item (click)="removeSong()">Remove</button>
+</mat-menu>
+<mat-menu #playlistMenu="matMenu">
+  <button mat-menu-item *ngFor="let playlist of playlists" (click)="addSongToPlaylist(playlist.id)">{{playlist.name}}</button>
+</mat-menu>
